@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
+  config:
+    import: optional:application-secret.yml
+logging:
+  level:
+    org.springframework: info
+    org.oolong: debug
