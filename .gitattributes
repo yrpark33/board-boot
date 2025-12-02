@@ -1,3 +1,7 @@
 /gradlew text eol=lf
 *.bat text eol=crlf
 *.jar binary
+
+# Template CSS/JS are 3rd-party → exclude from language stats
+src/main/resources/static/css/* linguist-vendored
+src/main/resources/static/js/* linguist-vendored

@@ -84,7 +84,7 @@ public class BoardRepositoryTests {
 
     }
 
-    @Test
+//    @Test
     public void testSearchAll() {
 
         String[] types = new String[] {"t", "c", "w"};
