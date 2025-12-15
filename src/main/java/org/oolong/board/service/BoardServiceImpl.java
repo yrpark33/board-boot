@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.oolong.board.domain.Board;
 import org.oolong.board.dto.BoardDTO;
+import org.oolong.board.dto.BoardListReplyCountDTO;
 import org.oolong.board.dto.PageRequestDTO;
 import org.oolong.board.dto.PageResponseDTO;
 import org.oolong.board.repository.BoardRepository;
@@ -74,6 +75,18 @@ public class BoardServiceImpl implements BoardService {
         List<BoardDTO> list = result.getContent().stream().map(board -> modelMapper.map(board, BoardDTO.class)).collect(Collectors.toList());
 
         return PageResponseDTO.<BoardDTO>withAll().pageRequestDTO(pageRequestDTO).dtoList(list).total((int)result.getTotalElements()).build();
+    }
+
+    @Override
+    public PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO) {
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("bno");
+
+        Page<BoardListReplyCountDTO> result = boardRepository.searchWithReplyCount(types, keyword, pageable);
+        return PageResponseDTO.<BoardListReplyCountDTO>withAll().dtoList(result.getContent()).pageRequestDTO(pageRequestDTO).total((int) result.getTotalElements()).build();
+
     }
 
 

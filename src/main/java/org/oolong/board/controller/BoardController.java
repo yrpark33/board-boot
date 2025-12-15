@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.oolong.board.dto.BoardDTO;
+import org.oolong.board.dto.BoardListReplyCountDTO;
 import org.oolong.board.dto.PageRequestDTO;
 import org.oolong.board.dto.PageResponseDTO;
 import org.oolong.board.service.BoardService;
@@ -27,7 +28,7 @@ public class BoardController {
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
-        PageResponseDTO<BoardDTO> responseDTO = boardService.getList(pageRequestDTO);
+        PageResponseDTO<BoardListReplyCountDTO> responseDTO = boardService.listWithReplyCount(pageRequestDTO);
         log.info(responseDTO);
         model.addAttribute("responseDTO", responseDTO);
     }
