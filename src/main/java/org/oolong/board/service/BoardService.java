@@ -1,6 +1,7 @@
 package org.oolong.board.service;
 
 import org.oolong.board.dto.BoardDTO;
+import org.oolong.board.dto.BoardListReplyCountDTO;
 import org.oolong.board.dto.PageRequestDTO;
 import org.oolong.board.dto.PageResponseDTO;
 
@@ -11,4 +12,5 @@ public interface BoardService {
     void modify(BoardDTO boardDTO);
     void remove(Long bno);
     PageResponseDTO<BoardDTO> getList(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO);
 }
