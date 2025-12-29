@@ -7,7 +7,19 @@ spring:
     show-sql: true
   config:
     import: optional:application-secret.yml
+  servlet:
+    multipart:
+      enabled: true
+      location: C:\\upload-b
+      max-request-size: 30MB
+      max-file-size: 10MB
 logging:
   level:
     org.springframework: info
     org.oolong: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+org:
+  oolong:
+    upload:
+      path: C:\\upload-b
